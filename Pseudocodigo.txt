@@ -1,0 +1,62 @@
+publico enum EstadoPrenda { NUEVA, PROMOCION, LIQUIDACION };
+
+publico clase Prenda{
+	privado float precioBase;
+	publico String tipo;
+	privado EstadoPrenda estado;
+	privado VALOR_RESTA_PROMOCION;
+
+	publico metodo tipo(){
+		imprimirPorConsola(tipo);
+	}
+
+	publico metodo precio(){
+		switch(estado){
+			caso NUEVA: Sistema.imprimirPorConsola(precioBase); break;
+			caso PROMOCION: Sistema.imprimirPorConsola(precioBase - VALOR_RESTA_PROMOCION); break;
+			caso LIQUIDACION: Sistema.imprimirPorConsola(precioBase * 0.5); break;
+		}
+	}
+
+	publico metodo modificarEstado(EstadoPrenda nuevoEstado){
+		estado = nuevoEstado;
+	}
+}
+
+publico clase PrendaVendida extiende Prenda{
+	publico int cantidadVendida;
+}
+
+publico interfaz Venta{
+	publico fecha fechaVenta;
+	protegido lista<PrendaVendida> prendasVendidas;
+
+	publico metodo ganancia();
+} 
+
+publico clase VentaEfectivo implementa Venta{
+	@Sobreescribir
+	publico metodo ganancia(){
+		retornar prendasVendidas.map(prenda -> prenda.precio() * cantidadVendida).suma();
+	}
+}
+
+publico clase VentaTarjeta implementa Venta{
+	privado int cantCuotas;
+	privado float COEF_FIJO;
+
+	@Sobreescribir
+	publico metodo ganancia(){
+		retornar prendasVendidas.map(prenda -> prenda.precio() * cantidadVendida * 1.01).suma() + cantCuotas * COEF_FIJO;
+	}
+}
+
+
+publico objeto VentasMacOwins{
+	privado lista<Venta> ventasTotales;
+	
+	public gananciasDelDia(fecha dia){
+		Sistema.imprimirPorConsola(ventasTotales.filtrar(venta -> venta.fechaVenta == dia).map(venta -> venta.ganancia()).suma());
+	}
+}
+
