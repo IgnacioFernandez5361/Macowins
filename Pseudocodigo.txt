@@ -12,9 +12,9 @@ publico clase Prenda{
 
 	publico metodo precio(){
 		switch(estado){
-			caso NUEVA: imprimirPorConsola(precioBase); break;
-			caso PROMOCION: imprimirPorConsola(precioBase - VALOR_RESTA_PROMOCION); break;
-			caso LIQUIDACION: imprimirPorConsola(precioBase * 0.5); break;
+			caso NUEVA: Sistema.imprimirPorConsola(precioBase); break;
+			caso PROMOCION: Sistema.imprimirPorConsola(precioBase - VALOR_RESTA_PROMOCION); break;
+			caso LIQUIDACION: Sistema.imprimirPorConsola(precioBase * 0.5); break;
 		}
 	}
 
@@ -56,7 +56,7 @@ publico objeto VentasMacOwins{
 	privado lista<Venta> ventasTotales;
 	
 	public gananciasDelDia(fecha dia){
-		imprimirPorConsola(ventasTotales.filtrar(venta -> venta.fechaVenta == dia).map(venta -> venta.ganancia()).suma());
+		Sistema.imprimirPorConsola(ventasTotales.filtrar(venta -> venta.fechaVenta == dia).map(venta -> venta.ganancia()).suma());
 	}
 }
 

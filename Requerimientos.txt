@@ -1,2 +1,0 @@
--Saber el precio de venta de una prenda y su tipo
--Saber las ganancias de un determinado día

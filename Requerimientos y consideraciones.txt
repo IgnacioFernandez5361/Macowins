@@ -1,0 +1,8 @@
+Requerimientos:
+-Saber el precio de venta de una prenda y su tipo
+-Saber las ganancias de un determinado día
+
+Consideraciones del pseudocódigo:
+Tomé como forma de informar al usuario sobre una consulta con un método inventado Sistema.imprimirPorConsola([dato_para_imprimir).
+Creé el objeto MacOwins con una lista ya cargada de todas las ventas, la cual se opera para mostrar las ganancias del día, en vez de utilizar algún tipo de input de datos.
+Utilicé el tipo fecha y asumí que dos fechas son comparables con el operador "=="
